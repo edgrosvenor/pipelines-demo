@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('festivals', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->string('name');
             $table->string('genre');
             $table->unsignedInteger('capacity');

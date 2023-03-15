@@ -13,9 +13,9 @@ class FestivalSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (['rap', 'metal'] as $genre) {
-            Festival::factory(10)->big()->create(['genre' => $genre]);
-            Festival::factory(10)->small()->create(['genre' => $genre]);
+        foreach (['metal'] as $genre) {
+            Festival::factory(20)->big()->create(['genre' => $genre]);
+            Festival::factory(20)->small()->create(['genre' => $genre]);
         }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FestivalController;
+use App\Http\Controllers\SlideController;
 use App\Http\Livewire\BandsTable;
 use App\Http\Livewire\FestivalsTable;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('slide/{slide}', SlideController::class)->name('slide');
 
 Route::get('bands', BandsTable::class)->name('bands');
 Route::get('festivals', FestivalsTable::class)->name('festivals');

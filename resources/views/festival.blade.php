@@ -17,6 +17,9 @@
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Distance</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Availability</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Reliablity</th>
+                            @if ($showMerch)
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Merch</th>
+                            @endif
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Value</th>
                         </tr>
                         </thead>
@@ -30,6 +33,9 @@
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $invitation->distance }} km</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ ucfirst($invitation->status) }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $invitation->band->reliability }}%</td>
+                            @if ($showMerch)
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $invitation->merch }}</td>
+                            @endif
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $invitation->value != 0 ? number_format($invitation->value, 2, '.') : '?' }}</td>
                         </tr>
                         @endforeach

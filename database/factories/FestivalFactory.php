@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class FestivalFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => implode(' ', [$this->faker->city, \Arr::random(['Days', 'Festival'])]),
+            'date' => Carbon::now()->addDays(random_int(90, 120)),
+            'name' => implode(' ', [$this->getCity(), \Arr::random(['Days', 'Festival', 'Thunder', 'Power'])]),
         ];
     }
 
@@ -41,5 +43,13 @@ class FestivalFactory extends Factory
                 'acts' => 16,
             ];
         });
+    }
+
+    public function getCity()
+    {
+        return \Arr::random([
+            'Basel', 'Bern', 'Zürich', 'Berlin', 'Paris', 'Hamburg', 'Frankfurt', 'London', 'Manchester', 'Vienna', 'Salzburg',
+            'Lucerne', 'Lausanne', 'Lugano', 'Chur'
+        ]);
     }
 }

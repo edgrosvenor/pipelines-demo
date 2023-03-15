@@ -13,7 +13,7 @@ class BandSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (['rap', 'metal'] as $genre) {
+        foreach (['metal'] as $genre) {
             Band::factory(100)->top()->create(['genre' => $genre]);
             Band::factory(200)->high()->create(['genre' => $genre]);
             Band::factory(300)->medium()->create(['genre' => $genre]);

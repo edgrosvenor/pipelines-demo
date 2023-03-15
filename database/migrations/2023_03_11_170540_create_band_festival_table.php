@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('festival_id');
             $table->unsignedInteger('distance');
             $table->string('status')->default('available');
+            $table->unsignedInteger('merch');
             $table->timestamps();
         });
     }

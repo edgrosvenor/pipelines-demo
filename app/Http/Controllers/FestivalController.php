@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Actions\AddDrivingCost;
+use App\Actions\AddHotelCost;
+use App\Actions\AdjustCostForMerchStandRental;
 use App\Actions\AdjustDrawByDistance;
 use App\Actions\AdjustForAge;
 use App\Actions\AdjustForAvailability;
@@ -10,9 +12,7 @@ use App\Actions\AdjustForReliability;
 use App\Actions\CalculateCost;
 use App\Actions\CalculateDraw;
 use App\Actions\CalculateValue;
-use App\Actions\GetQualityByCostPerSeat;
 use App\Models\Festival;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Pipeline;
 
 class FestivalController
@@ -28,14 +28,26 @@ class FestivalController
                     AdjustDrawByDistance::class,
                     CalculateCost::class,
                     AddDrivingCost::class,
-                    AdjustForAvailability::class,
-                    AdjustForAge::class,
+                    AdjustCostForMerchStandRental::class,
+                    AddHotelCost::class,
                     CalculateValue::class,
-                    AdjustForReliability::class,
                 ])
                 ->thenReturn();
         })->sortByDesc('value');
 
-        return view('festival', ['festival' => $festival, 'invitations' => $invitations]);
+        return view('festival', ['festival' => $festival, 'invitations' => $invitations, 'showMerch' => true]);
     }
 }
+
+/**
+ *
+ * CalculateDraw::class,
+AdjustDrawByDistance::class,
+CalculateCost::class,
+AddDrivingCost::class,
+AdjustForAvailability::class,
+AdjustForAge::class,
+AdjustCostForMerchStandRental::class,
+CalculateValue::class,
+AdjustForReliability::class,
+ */

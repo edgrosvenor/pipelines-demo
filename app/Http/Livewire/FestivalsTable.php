@@ -15,7 +15,7 @@ class FestivalsTable extends Component implements HasTable
 
     public function getTableQuery()
     {
-        return Festival::query();
+        return Festival::query()->orderBy('date');
     }
 
     protected function getTableRecordUrlUsing(): ?Closure
@@ -26,6 +26,7 @@ class FestivalsTable extends Component implements HasTable
     public function getTableColumns()
     {
         return [
+            TextColumn::make('date')->date('F d'),
             TextColumn::make('name'),
             TextColumn::make('genre')->getStateUsing(fn($record) => ucfirst($record->genre)),
             TextColumn::make('acts'),
@@ -33,6 +34,11 @@ class FestivalsTable extends Component implements HasTable
             TextColumn::make('price'),
             TextColumn::make('capacity'),
         ];
+    }
+
+    public function isTablePaginationEnabled(): bool
+    {
+        return false;
     }
 
     public function render()
